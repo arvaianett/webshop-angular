@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="col">
+        <a [routerLink]="'/basket'">Show basket</a>
+    </div>
+    <div class="col">
+        <div class="input">
+            <input #searchParam searchParam.value="" type="text" class="form-control">
+            <button class="button button-secondary" (click)="searchEventHandler(searchParam.value)">Search</button>
+        </div>
+        <div class="card">
+            <div *ngFor="let book of searchBookResultHarryPotter">
+                <div class="card" *ngFor="let author of book.authors">
+                    Authors: {{author}}
+                    <a [routerLink]="['/book-details', book.id]">Title: {{book.title}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="card" *ngIf="searchBookResult">
+            <div *ngFor="let book of searchBookResult">
+                <div class="card" *ngFor="let author of book.authors">
+                    Authors: {{author}}
+                    <a [routerLink]="['/book-details', book.id]">Title: {{book.title}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>

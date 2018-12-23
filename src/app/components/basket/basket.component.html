@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col">
+    <a [routerLink]="'/basket'">Show basket</a>
+  </div>
+  <div class="col">
+    <h1>Selected books:</h1>
+    <div class="card" *ngFor="let book of selectedBooks">
+      <li>Title: {{book.title}}</li>
+      <li>
+        Authors:
+        <ul>
+          <li *ngFor="let author of book.authors">{{author}}</li>
+        </ul>
+      </li>
+      <li>Description: {{book.description}}</li>
+      <li>
+        <img [src]="book.imageLink" alt="selected book's cover image">
+      </li>
+    </div>
+  </div>
+  <div class="col"></div>
+</div>
