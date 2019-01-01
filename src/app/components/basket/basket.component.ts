@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GoogleApiBookResponse } from '../../models/googleApiBookResponse';
+import { GoogleApiBookDetailsResponse } from '../../models/googleApiBookDetailsResponse';
 import { SelectedBooksService } from '../../services/selected-books.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { SelectedBooksService } from '../../services/selected-books.service';
   styleUrls: ['./basket.component.css']
 })
 export class BasketComponent implements OnInit {
-  public selectedBooks: GoogleApiBookResponse[];
+  public selectedBooks: GoogleApiBookDetailsResponse[];
 
   constructor(private selectedBookService: SelectedBooksService) { }
 
@@ -16,7 +16,12 @@ export class BasketComponent implements OnInit {
     this.selectedBooks = this.getSelectedBooks();
   }
 
-  private getSelectedBooks(): GoogleApiBookResponse[] {
+  private getSelectedBooks(): GoogleApiBookDetailsResponse[] {
     return this.selectedBookService.getAllSelectedBooks();
+  }
+
+  public clearBasket(): void {
+    this.selectedBooks = [];
+    this.selectedBookService.deleteAllSelectedBook();
   }
 }

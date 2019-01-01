@@ -8,11 +8,11 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './components/search/search.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { BasketComponent } from './components/basket/basket.component';
-import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 import { GoogleBookDataService } from './services/google-book-data.service';
 import { SelectedBooksService } from './services/selected-books.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { SelectedBooksService } from './services/selected-books.service';
     SearchComponent,
     BookDetailsComponent,
     BasketComponent,
-    LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

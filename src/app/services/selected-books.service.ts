@@ -1,29 +1,34 @@
 import { Injectable } from '@angular/core';
-import { GoogleApiBookResponse } from '../models/googleApiBookResponse';
+import { GoogleApiBookDetailsResponse } from '../models/googleApiBookDetailsResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SelectedBooksService {
-  public selectedBooks: GoogleApiBookResponse[];
+  public selectedBooks: GoogleApiBookDetailsResponse[];
 
   constructor() {
     this.selectedBooks = [];
   }
 
-  public addBookToSelectedList(book: GoogleApiBookResponse): void {
+  public addBookToSelectedList(book: GoogleApiBookDetailsResponse): void {
     if (this.getAllSelectedBooks().length !== 0) {
       this.selectedBooks = this.getAllSelectedBooks();
     }
     this.selectedBooks.push(book);
-    this.saveSelectedBooksToLocalStorage();
+    this.setSelectedBooksToLocalStorage();
   }
 
-  public getAllSelectedBooks(): GoogleApiBookResponse[] {
+  public getAllSelectedBooks(): GoogleApiBookDetailsResponse[] {
     return JSON.parse(localStorage.getItem('selected-books'));
   }
 
-  private saveSelectedBooksToLocalStorage(): void {
+  public deleteAllSelectedBook(): void {
+    this.selectedBooks = [];
+    this.setSelectedBooksToLocalStorage();
+  }
+
+  private setSelectedBooksToLocalStorage(): void {
     localStorage.setItem('selected-books', JSON.stringify(this.selectedBooks));
   }
 }

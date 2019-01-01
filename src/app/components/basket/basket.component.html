@@ -1,22 +1,25 @@
 <div class="container">
-  <div class="col">
-    <a [routerLink]="'/basket'">Show basket</a>
-  </div>
-  <div class="col">
-    <h1>Selected books:</h1>
-    <div class="card" *ngFor="let book of selectedBooks">
-      <li>Title: {{book.title}}</li>
-      <li>
-        Authors:
-        <ul>
-          <li *ngFor="let author of book.authors">{{author}}</li>
-        </ul>
-      </li>
-      <li>Description: {{book.description}}</li>
-      <li>
-        <img [src]="book.imageLink" alt="selected book's cover image">
-      </li>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <h1>Basket:</h1>
+      <button type="button" class="btn btn-light" (click)="clearBasket()">Clear basket</button>
+      <div class="card" *ngFor="let book of selectedBooks">
+        <div class="row">
+          <div class="col-2">
+            <img [src]="book.imageLink" alt="selected book's cover image">
+          </div>
+          <div class="col-10">
+            <p>Title: {{book.title}}</p>
+            <p>Authors:</p>
+              <ul>
+                <li *ngFor="let author of book.authors">{{author}}</li>
+              </ul>
+            <p>Description: {{book.description}}</p>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="col-1"></div>
   </div>
-  <div class="col"></div>
 </div>

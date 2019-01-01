@@ -1,23 +1,24 @@
 <div class="container">
   <div class="col">
-    <a [routerLink]="'/basket'">Show basket</a>
-  </div>
-  <div class="col">
-    <div class="card">
-      <ul>
-        <li>Title: {{selectedBook.title}}</li>
-        <li>
-          <ul>Authors:
-            <li *ngFor="let author of selectedBook.authors">
-              {{author}}
-            </li>
-          </ul>
-        </li>
-        <li>Description: {{selectedBook.description}}</li>
-        <li><img [src]=selectedBook.imageLink alt="selected book's cover"></li>
-      </ul>
-      <button (click)="addToBasketEventHandler()" type="button" class="btn btn-secondary">Add to basket</button>
-    </div>
+    <ng-container *ngIf="successApiResult; then bookDetails"></ng-container>
   </div>
   <div class="col"></div>
 </div>
+
+<ng-template #bookDetails>
+  <div *ngIf="successApiResult" class="card">
+    <ul>
+      <li>Title: {{selectedBook.title}}</li>
+      <li>
+        <ul>Authors:
+          <li *ngFor="let author of selectedBook.authors">
+            {{author}}
+          </li>
+        </ul>
+      </li>
+      <li>Description: {{selectedBook.description}}</li>
+      <li><img [src]=selectedBook.imageLink alt="selected book's cover"></li>
+    </ul>
+    <button (click)="addToBasketEventHandler()" type="button" class="btn btn-secondary">Add to basket</button>
+  </div>
+</ng-template>
