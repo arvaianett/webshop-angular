@@ -2,11 +2,6 @@
     margin-top: 2em;
 }
 
-.book-card {
-    width: 6em;
-    height: 10em;
-}
-
 .book-title {
     font-size: 0.9em;
     cursor: pointer;

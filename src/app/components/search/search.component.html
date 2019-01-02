@@ -21,16 +21,20 @@
 </div>
 
 <ng-template #bookList>
-    <div *ngFor="let book of searchResult">
-        <div class="card book-card">
-            <h5 class="book-title" (click)="bookDetailsEventHandler(book)">{{book.title}}</h5>
-            <span>
-                <span *ngFor="let author of book.authors">
-                    <ul>
-                        <li class="book-author">{{author}}</li>
-                    </ul>
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div *ngFor="let book of searchResult">
+            <div class="card book-card">
+                <h5 class="book-title" (click)="bookDetailsEventHandler(book)">{{book.title}}</h5>
+                <span>
+                    <span *ngFor="let author of book.authors">
+                        <ul>
+                            <li class="book-author">{{author}}</li>
+                        </ul>
+                    </span>
                 </span>
-            </span>
+            </div>
         </div>
     </div>
+    <div class="col-1"></div>
 </ng-template>

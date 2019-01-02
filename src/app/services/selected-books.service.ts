@@ -12,11 +12,15 @@ export class SelectedBooksService {
   }
 
   public addBookToSelectedList(book: GoogleApiBookDetailsResponse): void {
-    if (this.getAllSelectedBooks().length !== 0) {
-      this.selectedBooks = this.getAllSelectedBooks();
-    }
+    this.setSelectedBooksList();
     this.selectedBooks.push(book);
     this.setSelectedBooksToLocalStorage();
+  }
+
+  private setSelectedBooksList(): void {
+    if (this.getAllSelectedBooks() && this.getAllSelectedBooks().length !== 0) {
+      this.selectedBooks = this.getAllSelectedBooks();
+    }
   }
 
   public getAllSelectedBooks(): GoogleApiBookDetailsResponse[] {
